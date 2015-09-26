@@ -1,22 +1,22 @@
 package com.dwview.profileviewer.representations;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
- * Created by alberto on 2015-09-25.
+ * Created by Alberto on 2015-09-26.
  */
 public class View {
+    private final long viewerId;
+    private final String DateTime;
 
-    private long viewerId;
-
-    public View(){}
-
-    public View(long viewerId) {
+    public View(long viewerId, String dateTime) {
         this.viewerId = viewerId;
+        DateTime = dateTime;
     }
 
-    @JsonProperty
     public long getViewerId() {
         return viewerId;
+    }
+
+    public String getDateTime() {
+        return DateTime;
     }
 }
