@@ -1,23 +1,29 @@
 package com.dwview.profileviewer.representations;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by Alberto on 2015-09-26.
  */
 public class View {
-    private final long viewerId;
-    private final String DateTime;
+    private long viewerId;
+    private String dateTime;
 
+    public View(){}
+    
     public View(long viewerId, String dateTime) {
         this.viewerId = viewerId;
-        DateTime = dateTime;
+        this.dateTime = dateTime;
     }
 
+    @JsonProperty
     public long getViewerId() {
         return viewerId;
     }
 
+    @JsonProperty
     public String getDateTime() {
-        return DateTime;
+        return dateTime;
     }
 
     @Override
@@ -28,14 +34,14 @@ public class View {
         View view = (View) o;
 
         if (viewerId != view.viewerId) return false;
-        return !(DateTime != null ? !DateTime.equals(view.DateTime) : view.DateTime != null);
+        return !(dateTime != null ? !dateTime.equals(view.dateTime) : view.dateTime != null);
 
     }
 
     @Override
     public int hashCode() {
         int result = (int) (viewerId ^ (viewerId >>> 32));
-        result = 31 * result + (DateTime != null ? DateTime.hashCode() : 0);
+        result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
         return result;
     }
 }
