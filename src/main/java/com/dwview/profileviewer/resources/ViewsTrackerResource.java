@@ -1,8 +1,9 @@
 package com.dwview.profileviewer.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import com.dwview.profileviewer.db.ViewDataAccessAPI;
 import com.dwview.profileviewer.representations.View;
-import com.dwview.profileviewer.storage.DataStore;
+import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,17 +19,18 @@ import java.util.List;
 @Path("/views")
 @Produces(MediaType.APPLICATION_JSON)
 public class ViewsTrackerResource {
-    private final DataStore dataStore;
+    private final ViewDataAccessAPI viewDataAccessAPI;
 
-    public ViewsTrackerResource(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public ViewsTrackerResource(ViewDataAccessAPI viewDataAccessAPI) {
+        this.viewDataAccessAPI = viewDataAccessAPI;
     }
 
     @GET
     @Path("/{id}")
     @Timed
+    @UnitOfWork
     public List<View> listViews(@PathParam("id") long id){
-        List<View> retrievedViews = dataStore.listViews(id);
+        List<View> retrievedViews = viewDataAccessAPI.listViews(id);
         return retrievedViews;
     }
 }

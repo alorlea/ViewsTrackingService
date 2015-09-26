@@ -1,8 +1,8 @@
 package com.dwview.profileviewer.resources;
 
 import com.dwview.profileviewer.representations.View;
-import com.dwview.profileviewer.storage.DataStore;
-import com.dwview.profileviewer.storage.MockDataStoreImplementation;
+import com.dwview.profileviewer.db.ViewDataAccessAPI;
+import com.dwview.profileviewer.db.MockViewDataAccessAPIImplementation;
 import io.dropwizard.testing.junit.ResourceTestRule;
 import org.joda.time.DateTime;
 import org.junit.Before;
@@ -22,15 +22,15 @@ import static org.junit.Assert.assertFalse;
  */
 public class ViewsTrackerResourceTest {
 
-    private static DataStore dataStore = new MockDataStoreImplementation();
+    private static ViewDataAccessAPI viewDataAccessAPI = new MockViewDataAccessAPIImplementation();
     @ClassRule
     public static final ResourceTestRule resources = ResourceTestRule.builder()
-            .addResource(new ViewsTrackerResource(dataStore))
+            .addResource(new ViewsTrackerResource(viewDataAccessAPI))
             .build();
 
     @Before
     public void setup(){
-        dataStore.createView(5,new View(10, DateTime.now().toString()));
+        viewDataAccessAPI.createView(new View(5, 10, DateTime.now().toString()));
     }
 
     @Test

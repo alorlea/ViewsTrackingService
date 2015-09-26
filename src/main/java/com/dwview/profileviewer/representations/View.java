@@ -1,28 +1,50 @@
 package com.dwview.profileviewer.representations;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
 
 /**
  * Created by Alberto on 2015-09-26.
  */
+
+@Entity
+@Table(name = "view")
+@NamedQueries({
+        @NamedQuery(name = "view.findRecentViews", query = "SELECT v FROM View v WHERE v.userId = ?")})
 public class View {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
+    private long id;
+    @Column(name="userID",nullable = false)
+    private long userId;
+    @Column(name="viewerID",nullable = false)
     private long viewerId;
+    @Column(name="dateTime",nullable = false)
     private String dateTime;
 
     public View(){}
 
-    public View(long viewerId, String dateTime) {
+    public View(long userId, long viewerId, String dateTime) {
+        this.userId = userId;
         this.viewerId = viewerId;
         this.dateTime = dateTime;
     }
 
-    @JsonProperty
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public long getViewerId() {
         return viewerId;
     }
 
-    @JsonProperty
+
     public String getDateTime() {
         return dateTime;
     }
@@ -44,5 +66,9 @@ public class View {
         int result = (int) (viewerId ^ (viewerId >>> 32));
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
         return result;
+    }
+
+    public long getUserId() {
+        return userId;
     }
 }

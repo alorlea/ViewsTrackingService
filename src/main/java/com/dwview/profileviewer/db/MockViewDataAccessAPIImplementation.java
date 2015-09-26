@@ -1,4 +1,4 @@
-package com.dwview.profileviewer.storage;
+package com.dwview.profileviewer.db;
 
 import com.dwview.profileviewer.representations.View;
 import org.joda.time.DateTime;
@@ -14,18 +14,18 @@ import java.util.stream.Collectors;
 /**
  * Created by Alberto on 2015-09-26.
  */
-public class MockDataStoreImplementation implements DataStore {
+public class MockViewDataAccessAPIImplementation implements ViewDataAccessAPI {
 
     public Map<Long,List<View>> storage;
 
-    public MockDataStoreImplementation(){
+    public MockViewDataAccessAPIImplementation(){
         this.storage = new ConcurrentHashMap<>();
     }
 
     @Override
-    public void createView(long whoViewedId,View view) {
-        if(storage.containsKey(whoViewedId)){
-            List<View> views = storage.get(whoViewedId);
+    public View createView(View view) {
+        if(storage.containsKey(view.getUserId())){
+            List<View> views = storage.get(view.getUserId());
             views.add(view);
             Collections.sort(views, (o1, o2) -> {
                 DateTime o1Date = new DateTime(o1.getDateTime());
@@ -35,8 +35,9 @@ public class MockDataStoreImplementation implements DataStore {
         }else{
             List<View> views = new ArrayList<>();
             views.add(view);
-            storage.put(whoViewedId,views);
+            storage.put(view.getUserId(),views);
         }
+        return view;
     }
 
     @Override

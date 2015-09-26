@@ -23,13 +23,13 @@ public class ViewTest {
 
     @Test
     public void serializeToJSON() throws Exception{
-        final View view = new View(10,localDateTime.toString());
+        final View view = new View(10, 10,localDateTime.toString());
         assertThat(MAPPER.writeValueAsString(view)).isEqualTo(fixture("fixtures/view.json"));
     }
 
     @Test
     public void deserializeFromJSON() throws Exception{
-        final View view = new View(10,localDateTime.toString());
+        final View view = new View(10, 10,localDateTime.toString());
         assertThat(MAPPER.readValue(fixture("fixtures/view.json"),View.class));
     }
 }
