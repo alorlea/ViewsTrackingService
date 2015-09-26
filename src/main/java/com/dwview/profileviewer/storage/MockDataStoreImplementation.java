@@ -3,9 +3,9 @@ package com.dwview.profileviewer.storage;
 import com.dwview.profileviewer.representations.View;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Alberto on 2015-09-26.
@@ -15,7 +15,7 @@ public class MockDataStoreImplementation implements DataStore {
     public Map<Long,List<View>> storage;
 
     public MockDataStoreImplementation(){
-        this.storage = new HashMap<>();
+        this.storage = new ConcurrentHashMap<>();
     }
 
     @Override
