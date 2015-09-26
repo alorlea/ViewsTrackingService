@@ -14,13 +14,13 @@ public class ViewDataRequestTest {
     @Test
     public void serializeToJSON() throws Exception{
         final ViewDataRequest viewDataRequest = new ViewDataRequest(10);
-        assertThat(MAPPER.writeValueAsString(viewDataRequest)).isEqualTo(fixture("fixtures/view.json"));
+        assertThat(MAPPER.writeValueAsString(viewDataRequest)).isEqualTo(fixture("fixtures/viewRequest.json"));
     }
 
     @Test
     public void deserializeFromJSON() throws Exception{
         final ViewDataRequest viewDataRequest = new ViewDataRequest(10);
-        assertThat(MAPPER.readValue(fixture("fixtures/view.json"),ViewDataRequest.class));
+        assertThat(MAPPER.readValue(fixture("fixtures/viewRequest.json"),ViewDataRequest.class));
     }
 
 }

@@ -1,7 +1,7 @@
 package com.dwview.profileviewer.storage;
 
 import com.dwview.profileviewer.representations.View;
-import org.joda.time.LocalDateTime;
+import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class MockDataStoreImplementationTest {
     @Test
     public void createSuccesfulView(){
         DataStore dataStore = new MockDataStoreImplementation();
-        View view = new View(10, LocalDateTime.now().toString());
+        View view = new View(10, DateTime.now().toString());
         dataStore.createView(10,view);
 
         assertFalse(dataStore.listViews(10).isEmpty());
@@ -27,7 +27,7 @@ public class MockDataStoreImplementationTest {
     @Test
     public void listViewsWithOneElement(){
         DataStore dataStore = new MockDataStoreImplementation();
-        View view = new View(10, LocalDateTime.now().toString());
+        View view = new View(10, DateTime.now().toString());
         dataStore.createView(10,view);
 
         assertFalse(dataStore.listViews(10).isEmpty());
@@ -37,8 +37,8 @@ public class MockDataStoreImplementationTest {
     @Test
     public void listViewsWithMoreElementsForId(){
         DataStore dataStore = new MockDataStoreImplementation();
-        View view = new View(10, LocalDateTime.now().toString());
-        View view2 = new View(11, LocalDateTime.now().toString());
+        View view = new View(10, DateTime.now().toString());
+        View view2 = new View(11, DateTime.now().toString());
         dataStore.createView(10,view);
         dataStore.createView(10,view2);
 

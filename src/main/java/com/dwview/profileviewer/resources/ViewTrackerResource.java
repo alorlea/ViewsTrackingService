@@ -4,7 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.dwview.profileviewer.representations.View;
 import com.dwview.profileviewer.representations.ViewDataRequest;
 import com.dwview.profileviewer.storage.DataStore;
-import org.joda.time.LocalDateTime;
+import org.joda.time.DateTime;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -29,7 +29,7 @@ public class ViewTrackerResource {
     @Timed
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createNewView(@PathParam("id")long id,ViewDataRequest dataRequest){
-        LocalDateTime date = LocalDateTime.now();
+        DateTime date = DateTime.now();
         View view = new View(dataRequest.getViewerId(),date.toString());
         dataStore.createView(id,view);
         return Response.status(201).build();

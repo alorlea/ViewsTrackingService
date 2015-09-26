@@ -2,6 +2,7 @@ package com.dwview.profileviewer.representations;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 /**
  * Created by Alberto on 2015-09-26.
  */
@@ -10,7 +11,7 @@ public class View {
     private String dateTime;
 
     public View(){}
-    
+
     public View(long viewerId, String dateTime) {
         this.viewerId = viewerId;
         this.dateTime = dateTime;

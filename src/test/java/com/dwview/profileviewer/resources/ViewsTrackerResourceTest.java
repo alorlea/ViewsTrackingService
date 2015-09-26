@@ -4,7 +4,7 @@ import com.dwview.profileviewer.representations.View;
 import com.dwview.profileviewer.storage.DataStore;
 import com.dwview.profileviewer.storage.MockDataStoreImplementation;
 import io.dropwizard.testing.junit.ResourceTestRule;
-import org.joda.time.LocalDateTime;
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -12,7 +12,6 @@ import org.junit.Test;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -31,7 +30,7 @@ public class ViewsTrackerResourceTest {
 
     @Before
     public void setup(){
-        dataStore.createView(5,new View(10, LocalDateTime.now().toString()));
+        dataStore.createView(5,new View(10, DateTime.now().toString()));
     }
 
     @Test

@@ -5,7 +5,7 @@ import com.dwview.profileviewer.representations.ViewDataRequest;
 import com.dwview.profileviewer.storage.DataStore;
 import com.dwview.profileviewer.storage.MockDataStoreImplementation;
 import io.dropwizard.testing.junit.ResourceTestRule;
-import org.joda.time.LocalDateTime;
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -28,7 +28,7 @@ public class ViewTrackerResourceTest {
 
     @Before
     public void setup(){
-        dataStore.createView(5,new View(10, LocalDateTime.now().toString()));
+        dataStore.createView(5,new View(10, DateTime.now().toString()));
     }
 
     @Test
