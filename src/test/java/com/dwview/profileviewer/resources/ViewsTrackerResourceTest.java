@@ -30,7 +30,7 @@ public class ViewsTrackerResourceTest {
 
     @Before
     public void setup(){
-        viewDataAccessAPI.createView(new View(5, 10, DateTime.now().toString()));
+        viewDataAccessAPI.createView(new View(5, 10, DateTime.now()));
     }
 
     @Test

@@ -32,7 +32,7 @@ public class ViewTrackerResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createNewView(@PathParam("id")long id,ViewDataRequest dataRequest){
         DateTime date = DateTime.now();
-        View view = new View(id, dataRequest.getViewerId(),date.toString());
+        View view = new View(id, dataRequest.getViewerId(),date);
         viewDataAccessAPI.createView(view);
         return Response.status(201).build();
     }

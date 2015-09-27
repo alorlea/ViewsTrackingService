@@ -28,7 +28,7 @@ public class ViewTrackerResourceTest {
 
     @Before
     public void setup(){
-        viewDataAccessAPI.createView(new View(10, 10, DateTime.now().toString()));
+        viewDataAccessAPI.createView(new View(10, 10, DateTime.now()));
     }
 
     @Test

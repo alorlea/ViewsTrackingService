@@ -1,6 +1,12 @@
 package com.dwview.profileviewer.representations;
 
+import com.dwview.profileviewer.json.CustomViewDeserializer;
+import com.dwview.profileviewer.json.CustomViewSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
@@ -22,11 +28,13 @@ public class View {
     @Column(name="viewerID",nullable = false)
     private long viewerId;
     @Column(name="dateTime",nullable = false)
-    private String dateTime;
+    @JsonSerialize(using = CustomViewSerializer.class)
+    @JsonDeserialize(using = CustomViewDeserializer.class)
+    private DateTime dateTime;
 
     public View(){}
 
-    public View(long userId, long viewerId, String dateTime) {
+    public View(long userId, long viewerId, DateTime dateTime) {
         this.userId = userId;
         this.viewerId = viewerId;
         this.dateTime = dateTime;
@@ -45,8 +53,12 @@ public class View {
     }
 
 
-    public String getDateTime() {
+    public DateTime getDateTime() {
         return dateTime;
+    }
+
+    public long getUserId() {
+        return userId;
     }
 
     @Override
@@ -56,6 +68,8 @@ public class View {
 
         View view = (View) o;
 
+        if (id != view.id) return false;
+        if (userId != view.userId) return false;
         if (viewerId != view.viewerId) return false;
         return !(dateTime != null ? !dateTime.equals(view.dateTime) : view.dateTime != null);
 
@@ -63,12 +77,10 @@ public class View {
 
     @Override
     public int hashCode() {
-        int result = (int) (viewerId ^ (viewerId >>> 32));
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (int) (userId ^ (userId >>> 32));
+        result = 31 * result + (int) (viewerId ^ (viewerId >>> 32));
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
         return result;
-    }
-
-    public long getUserId() {
-        return userId;
     }
 }

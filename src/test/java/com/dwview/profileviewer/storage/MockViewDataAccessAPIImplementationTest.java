@@ -20,7 +20,7 @@ public class MockViewDataAccessAPIImplementationTest {
     @Test
     public void createSuccesfulView(){
         ViewDataAccessAPI viewDataAccessAPI = new MockViewDataAccessAPIImplementation();
-        View view = new View(10, 10, DateTime.now().toString());
+        View view = new View(10, 10, DateTime.now());
         viewDataAccessAPI.createView(view);
 
         assertFalse(viewDataAccessAPI.listViews(10).isEmpty());
@@ -29,7 +29,7 @@ public class MockViewDataAccessAPIImplementationTest {
     @Test
     public void listViewsWithOneElement(){
         ViewDataAccessAPI viewDataAccessAPI = new MockViewDataAccessAPIImplementation();
-        View view = new View(10, 10, DateTime.now().toString());
+        View view = new View(10, 10, DateTime.now());
         viewDataAccessAPI.createView(view);
 
         assertFalse(viewDataAccessAPI.listViews(10).isEmpty());
@@ -39,8 +39,8 @@ public class MockViewDataAccessAPIImplementationTest {
     @Test
     public void listViewsWithMoreElementsForId(){
         ViewDataAccessAPI viewDataAccessAPI = new MockViewDataAccessAPIImplementation();
-        View view = new View(10, 10, DateTime.now().toString());
-        View view2 = new View(10, 11, DateTime.now().toString());
+        View view = new View(10, 10, DateTime.now());
+        View view2 = new View(10, 11, DateTime.now());
         viewDataAccessAPI.createView(view);
         viewDataAccessAPI.createView(view2);
 
