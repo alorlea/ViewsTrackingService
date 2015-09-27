@@ -12,14 +12,17 @@ import java.util.stream.Collectors;
  * Created by Alberto on 2015-09-27.
  */
 public class FilterBasedRules {
-
-    public FilterBasedRules() {
+    public final int numberOfDaysAgeLimitation;
+    public final int listMaxLimit;
+    public FilterBasedRules(int numberOfDaysAgeLimitation, int listMaxLimit) {
+        this.numberOfDaysAgeLimitation = numberOfDaysAgeLimitation;
+        this.listMaxLimit = listMaxLimit;
     }
 
     public List<View> filterBasedOnLimitAndDays(List<View> views) {
         views = views.stream().filter(view ->
-                (new DateTime(view.getDateTime())).isAfter(DateTime.now().minusDays(10)))
-                .limit(10)
+                (new DateTime(view.getDateTime())).isAfter(DateTime.now().minusDays(numberOfDaysAgeLimitation)))
+                .limit(listMaxLimit)
                 .collect(Collectors.toList());
         return views;
     }

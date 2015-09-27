@@ -22,7 +22,7 @@ public class ViewTrackerApplication extends Application<ViewTrackerConfiguration
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(ViewTrackerApplication.class);
 
-    public static void main( String[] args ) throws Exception {
+    public static void main(String[] args ) throws Exception {
         new ViewTrackerApplication().run(args);
     }
 
@@ -41,8 +41,14 @@ public class ViewTrackerApplication extends Application<ViewTrackerConfiguration
     @Override
     public void run(ViewTrackerConfiguration configuration, Environment environment) throws Exception {
         LOGGER.info("Method App#run() called");
+
         final ViewDAO viewDAO = new ViewDAO(hibernate.getSessionFactory());
-        final FilterBasedRules filterBasedRules = new FilterBasedRules();
+        LOGGER.info("Database viewDAO, initialized with hibernate");
+
+        final FilterBasedRules filterBasedRules = configuration.getFilterRules().build(environment);
+
+        LOGGER.info("FilterBased Rules initialized with values from configuration file");
+
         final ViewsTrackerResource viewsTrackerResource = new ViewsTrackerResource(viewDAO,filterBasedRules);
         final ViewTrackerResource viewTrackerResource = new ViewTrackerResource(viewDAO);
 

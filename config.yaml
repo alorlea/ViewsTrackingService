@@ -1,3 +1,7 @@
+filterRules:
+  numberOfDaysAgeLimitation: 10
+  listLimit: 10
+
 database:
   driverClass: org.h2.Driver
   user: sa

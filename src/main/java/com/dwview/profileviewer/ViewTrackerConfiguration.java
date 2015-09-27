@@ -11,6 +11,11 @@ import javax.validation.constraints.NotNull;
  * Created by alberto on 2015-09-25.
  */
 public class ViewTrackerConfiguration extends Configuration{
+
+    @Valid
+    @NotNull
+    private FilterOptionsFactory filterRules = new FilterOptionsFactory();
+
     @Valid
     @NotNull
     private DataSourceFactory database = new DataSourceFactory();
@@ -23,5 +28,23 @@ public class ViewTrackerConfiguration extends Configuration{
     @JsonProperty("database")
     public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
         this.database = dataSourceFactory;
+    }
+
+    @JsonProperty("filterRules")
+    public FilterOptionsFactory getFilterRules() {
+        return filterRules;
+    }
+
+    @JsonProperty("filterRules")
+    public void setFilterRules(FilterOptionsFactory filterRules) {
+        this.filterRules = filterRules;
+    }
+
+    public DataSourceFactory getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(DataSourceFactory database) {
+        this.database = database;
     }
 }

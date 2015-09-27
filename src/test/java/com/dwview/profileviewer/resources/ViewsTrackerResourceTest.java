@@ -25,7 +25,7 @@ import static org.junit.Assert.assertFalse;
 public class ViewsTrackerResourceTest {
 
     private static ViewDataAccessAPI viewDataAccessAPI = new MockViewDataAccessAPIImplementation();
-    private static FilterBasedRules rules = new FilterBasedRules();
+    private static FilterBasedRules rules = new FilterBasedRules(10, 10);
     @ClassRule
     public static final ResourceTestRule resources = ResourceTestRule.builder()
             .addResource(new ViewsTrackerResource(viewDataAccessAPI,rules))
