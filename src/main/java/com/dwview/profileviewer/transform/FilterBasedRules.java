@@ -1,4 +1,4 @@
-package com.dwview.profileviewer;
+package com.dwview.profileviewer.transform;
 
 import com.dwview.profileviewer.representations.View;
 import org.joda.time.DateTime;

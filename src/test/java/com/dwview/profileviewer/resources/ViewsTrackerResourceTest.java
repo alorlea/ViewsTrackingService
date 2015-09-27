@@ -3,7 +3,7 @@ package com.dwview.profileviewer.resources;
 import com.dwview.profileviewer.representations.View;
 import com.dwview.profileviewer.db.ViewDataAccessAPI;
 import com.dwview.profileviewer.db.MockViewDataAccessAPIImplementation;
-import com.dwview.profileviewer.FilterBasedRules;
+import com.dwview.profileviewer.transform.FilterBasedRules;
 import io.dropwizard.testing.junit.ResourceTestRule;
 import org.joda.time.DateTime;
 import org.junit.Before;
