@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static io.dropwizard.testing.FixtureHelpers.fixture;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -30,6 +32,26 @@ public class ViewTest {
     @Test
     public void deserializeFromJSON() throws Exception{
         final View view = new View(10, 10,localDateTime);
-        assertThat(MAPPER.readValue(fixture("fixtures/view.json"),View.class));
+        assertThat(MAPPER.readValue(fixture("fixtures/view.json"), View.class));
+    }
+
+    @Test
+    public void checkEqualsSameObjects(){
+        final View view = new View(10, 10,localDateTime);
+        final View view1 = new View(10, 10,localDateTime);
+        assertTrue(view.equals(view1));
+    }
+
+    @Test
+    public void checkEqualsNotSameObjects(){
+        final View view = new View(10, 10,localDateTime);
+        final View view1 = new View(11, 10,localDateTime);
+        assertFalse(view.equals(view1));
+    }
+
+    @Test
+    public void checkHashCode(){
+        final View view = new View(10, 10,localDateTime);
+        assertTrue(view.hashCode() == -574297519);
     }
 }

@@ -23,10 +23,6 @@ public class CustomViewSerializer extends StdScalarSerializer<DateTime> {
         super(DateTime.class);
     }
 
-    protected CustomViewSerializer(Class<DateTime> t) {
-        super(t);
-    }
-
     @Override
     public void serialize(DateTime dateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
             throws IOException, JsonGenerationException {

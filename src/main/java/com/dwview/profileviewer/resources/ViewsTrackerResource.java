@@ -3,6 +3,7 @@ package com.dwview.profileviewer.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.dwview.profileviewer.db.ViewDataAccessAPI;
 import com.dwview.profileviewer.representations.View;
+import com.dwview.profileviewer.util.FilterBasedRules;
 import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.ws.rs.GET;
@@ -20,9 +21,11 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class ViewsTrackerResource {
     private final ViewDataAccessAPI viewDataAccessAPI;
+    private final FilterBasedRules filterBasedRules;
 
-    public ViewsTrackerResource(ViewDataAccessAPI viewDataAccessAPI) {
+    public ViewsTrackerResource(ViewDataAccessAPI viewDataAccessAPI,FilterBasedRules rules) {
         this.viewDataAccessAPI = viewDataAccessAPI;
+        this.filterBasedRules = rules;
     }
 
     @GET
@@ -31,6 +34,8 @@ public class ViewsTrackerResource {
     @UnitOfWork
     public List<View> listViews(@PathParam("id") long id){
         List<View> retrievedViews = viewDataAccessAPI.listViews(id);
+        filterBasedRules.sortBasedOnDateTime(retrievedViews);
+        retrievedViews = filterBasedRules.filterBasedOnLimitAndDays(retrievedViews);
         return retrievedViews;
     }
 }

@@ -5,6 +5,7 @@ import com.dwview.profileviewer.health.ApplicationHealthCheck;
 import com.dwview.profileviewer.representations.View;
 import com.dwview.profileviewer.resources.ViewTrackerResource;
 import com.dwview.profileviewer.resources.ViewsTrackerResource;
+import com.dwview.profileviewer.util.FilterBasedRules;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
@@ -41,7 +42,8 @@ public class ViewTrackerApplication extends Application<ViewTrackerConfiguration
     public void run(ViewTrackerConfiguration configuration, Environment environment) throws Exception {
         LOGGER.info("Method App#run() called");
         final ViewDAO viewDAO = new ViewDAO(hibernate.getSessionFactory());
-        final ViewsTrackerResource viewsTrackerResource = new ViewsTrackerResource(viewDAO);
+        final FilterBasedRules filterBasedRules = new FilterBasedRules();
+        final ViewsTrackerResource viewsTrackerResource = new ViewsTrackerResource(viewDAO,filterBasedRules);
         final ViewTrackerResource viewTrackerResource = new ViewTrackerResource(viewDAO);
 
         environment.healthChecks().register("ViewTrackerService", new ApplicationHealthCheck());

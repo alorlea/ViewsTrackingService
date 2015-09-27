@@ -23,10 +23,6 @@ public class CustomViewDeserializer extends StdScalarDeserializer<DateTime> {
         super(DateTime.class);
     }
 
-    protected CustomViewDeserializer(Class<?> vc) {
-        super(vc);
-    }
-
     @Override
     public DateTime deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         String dateStr = null;

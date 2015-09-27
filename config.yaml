@@ -2,7 +2,7 @@ database:
   driverClass: org.h2.Driver
   user: sa
 #  password:
-  url: jdbc:h2:./viewdb
+  url: jdbc:h2:./target/viewdb
   properties:
     charSet: UTF-8
     hibernate.hbm2ddl.auto: create
@@ -13,3 +13,12 @@ database:
   checkConnectionWhileIdle: false
   evictionInterval: 10s
   minIdleTime: 1 minute
+# Logging settings.
+logging:
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+  # Logger-specific levels.
+  loggers:
+    # Redirects SQL logs to a separate file
+    org.hibernate.SQL:
+      level: DEBUG
