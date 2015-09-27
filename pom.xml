@@ -48,6 +48,12 @@
       <version>${dropwizard.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.jadira.usertype</groupId>
+      <artifactId>usertype.core</artifactId>
+      <version>4.0.0.GA</version>
+    </dependency>
+
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>

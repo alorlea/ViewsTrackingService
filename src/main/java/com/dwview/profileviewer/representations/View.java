@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "view")
 @NamedQueries({
-        @NamedQuery(name = "view.findRecentViews", query = "SELECT v FROM View v WHERE v.userId = ?")})
+        @NamedQuery(name = "view.findRecentViews", query = "select v from View v where v.userId = ? order by dateTime desc")})
 public class View {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +30,7 @@ public class View {
     @Column(name="dateTime",nullable = false)
     @JsonSerialize(using = CustomViewSerializer.class)
     @JsonDeserialize(using = CustomViewDeserializer.class)
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime dateTime;
 
     public View(){}

@@ -2,9 +2,7 @@ package com.dwview.profileviewer.transform;
 
 import com.dwview.profileviewer.representations.View;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeComparator;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,11 +25,11 @@ public class FilterBasedRules {
         return views;
     }
 
-    public void sortBasedOnDateTime(List<View> views) {
+    /*public void sortBasedOnDateTime(List<View> views) {
         Collections.sort(views, (o1, o2) -> {
             DateTime o1Date = new DateTime(o1.getDateTime());
             DateTime o2Date = new DateTime(o1.getDateTime());
             return DateTimeComparator.getInstance().compare(o1Date, o2Date);
         });
-    }
+    }*/
 }

@@ -34,7 +34,6 @@ public class ViewsTrackerResource {
     @UnitOfWork
     public List<View> listViews(@PathParam("id") long id){
         List<View> retrievedViews = viewDataAccessAPI.listViews(id);
-        filterBasedRules.sortBasedOnDateTime(retrievedViews);
         retrievedViews = filterBasedRules.filterBasedOnLimitAndDays(retrievedViews);
         return retrievedViews;
     }
