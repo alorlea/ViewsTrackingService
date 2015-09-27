@@ -11,6 +11,7 @@ import org.joda.time.DateTime;
 import javax.persistence.*;
 
 /**
+ * Database schema
  * Created by Alberto on 2015-09-26.
  */
 
