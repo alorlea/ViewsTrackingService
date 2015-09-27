@@ -24,12 +24,4 @@ public class FilterBasedRules {
                 .collect(Collectors.toList());
         return views;
     }
-
-    /*public void sortBasedOnDateTime(List<View> views) {
-        Collections.sort(views, (o1, o2) -> {
-            DateTime o1Date = new DateTime(o1.getDateTime());
-            DateTime o2Date = new DateTime(o1.getDateTime());
-            return DateTimeComparator.getInstance().compare(o1Date, o2Date);
-        });
-    }*/
 }
