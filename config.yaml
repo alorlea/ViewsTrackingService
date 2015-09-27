@@ -11,7 +11,6 @@ database:
     charSet: UTF-8
     hibernate.hbm2ddl.auto: create
   maxWaitForConnection: 1s
-  validationQuery: "/* MyService Health Check */ SELECT 1"
   minSize: 8
   maxSize: 32
   checkConnectionWhileIdle: false
