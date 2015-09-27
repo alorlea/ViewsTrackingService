@@ -3,7 +3,7 @@ package com.dwview.profileviewer.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.dwview.profileviewer.db.ViewDataAccessAPI;
 import com.dwview.profileviewer.representations.View;
-import com.dwview.profileviewer.util.FilterBasedRules;
+import com.dwview.profileviewer.FilterBasedRules;
 import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.ws.rs.GET;

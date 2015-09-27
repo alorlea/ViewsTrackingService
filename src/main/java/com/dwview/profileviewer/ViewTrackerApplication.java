@@ -5,7 +5,6 @@ import com.dwview.profileviewer.health.ApplicationHealthCheck;
 import com.dwview.profileviewer.representations.View;
 import com.dwview.profileviewer.resources.ViewTrackerResource;
 import com.dwview.profileviewer.resources.ViewsTrackerResource;
-import com.dwview.profileviewer.util.FilterBasedRules;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
