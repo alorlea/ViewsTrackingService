@@ -39,12 +39,4 @@ public class ViewTrackerConfiguration extends Configuration{
     public void setFilterRules(FilterOptionsFactory filterRules) {
         this.filterRules = filterRules;
     }
-
-    public DataSourceFactory getDatabase() {
-        return database;
-    }
-
-    public void setDatabase(DataSourceFactory database) {
-        this.database = database;
-    }
 }
