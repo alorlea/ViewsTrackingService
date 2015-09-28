@@ -1,0 +1,12 @@
+filterRules:
+  numberOfDaysAgeLimitation: 10
+  listLimit: 10
+
+database:
+  driverClass: org.h2.Driver
+  user: sa
+#  password:
+  url: jdbc:h2:./target/viewdb
+  properties:
+      charSet: UTF-8
+      hibernate.hbm2ddl.auto: create-drop
