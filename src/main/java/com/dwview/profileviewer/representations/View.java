@@ -11,7 +11,14 @@ import org.joda.time.DateTime;
 import javax.persistence.*;
 
 /**
- * Database schema
+ * Database schema is created automatically by dropwizard
+ *
+ * CREATE TABLE view (
+    ID BIGINT,
+    DATETIME TIMESTAMP NOT NULL,
+    USERID BIGINT NOT NULL,
+    VIEWERID BIGINT NOT NULL
+ );
  * Created by Alberto on 2015-09-26.
  */
 
@@ -24,6 +31,7 @@ public class View {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private long id;
+    @JsonIgnore
     @Column(name="userID",nullable = false)
     private long userId;
     @Column(name="viewerID",nullable = false)

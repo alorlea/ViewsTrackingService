@@ -13,7 +13,6 @@ database:
   maxWaitForConnection: 1s
   minSize: 8
   maxSize: 32
-  checkConnectionWhileIdle: false
   evictionInterval: 10s
   minIdleTime: 1 minute
 # Logging settings.
